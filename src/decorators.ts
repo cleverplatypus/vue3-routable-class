@@ -12,6 +12,10 @@ type PlainDecoratorSignature = [
 
 type RouteHandlerParams = [{ priority: number }?];
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function RouteMatcher(
   target: RouteResolver,
   propertyKey: string
@@ -20,6 +24,10 @@ export function RouteMatcher(
   config!.activeRoutes.push((target as any)[propertyKey] as RouteResolver);
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function RouteActivated(
   ...args: PlainDecoratorSignature | RouteHandlerParams
 ) {
@@ -40,6 +48,10 @@ export function RouteActivated(
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function RouteDeactivated(
   ...args: PlainDecoratorSignature | RouteHandlerParams
 ) {
@@ -61,6 +73,10 @@ export function RouteDeactivated(
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function RouteUpdated(
   ...args: PlainDecoratorSignature | RouteHandlerParams
 ) {
@@ -82,6 +98,10 @@ export function RouteUpdated(
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function GuardRouteEnter(
   ...args: PlainDecoratorSignature | RouteHandlerParams
 ) {
@@ -104,6 +124,10 @@ export function GuardRouteEnter(
 }
 
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function RouteWatcher(config : RouteWatcherConfig) {
   return function (target: any, propertyKey: string, _: PropertyDescriptor) {
     if (config.match && (!Array.isArray(config.match) || (config.match as Array<any>).length)) {
@@ -117,6 +141,10 @@ export function RouteWatcher(config : RouteWatcherConfig) {
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function GuardRouteLeave(
   ...args: PlainDecoratorSignature | RouteHandlerParams
 ) {
@@ -139,6 +167,10 @@ export function GuardRouteLeave(
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function Routable(
   arg?: RouteMatchExpression | RouteMatchExpression[]
 ): Function {
@@ -171,22 +203,42 @@ function getHandlerArgsMetadataDecorator(type :symbol, ...args: any[]) {
   };
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function Param(name?: string) {
   return getHandlerArgsMetadataDecorator(PARAM_METADATA, ...(name ? [name] : []));
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function To(propertyPath?:string) {
   return getHandlerArgsMetadataDecorator(TO_METADATA, ...(propertyPath ? [propertyPath] : []));
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function From(propertyPath?:string) {
   return getHandlerArgsMetadataDecorator(FROM_METADATA, ...(propertyPath ? [propertyPath] : []));
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function Query(name?:string) {
   return getHandlerArgsMetadataDecorator(QUERY_METADATA, ...(name ? [name] : []));
 }
 
+/**
+ * @category Decorators
+ * @decorator
+ */
 export function Meta(path?: string) {
   return getHandlerArgsMetadataDecorator(META_METADATA, ...(path ? [path] : []));
 }

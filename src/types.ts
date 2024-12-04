@@ -32,7 +32,7 @@ export type HandlerParamMetadata = {
 }
 export type RoutingConfig = {
   defaultMatchTarget : RouteMatchTarget,
-  routeNameChainSeparator : string
+  routeNameChainSeparator? : string
 }
 
 export type GuardConfig = {
